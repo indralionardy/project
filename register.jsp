@@ -60,6 +60,14 @@
 							</tr>
 							<tr>
 								<td>
+									Fullname :
+								</td>
+								<td>
+									<input type="text" name="name">
+								</td>
+							</tr>
+							<tr>
+								<td>
 									Email :
 								</td>
 								<td>
@@ -71,7 +79,7 @@
 									Image :
 								</td>
 								<td>
-									<input type="file" name="image" accept="image/*">
+								<input type="text" name="image">
 								</td>
 							</tr>
 							<tr>

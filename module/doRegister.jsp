@@ -5,28 +5,12 @@
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
 	String repassword = request.getParameter("repassword");
+	String fullname = request.getParameter("name");
 	String email = request.getParameter("email");
 	String image = request.getParameter("image");
-	Integer online = 0;
-	String query = "SELECT * FROM MsUser where username ='"+username+"' AND Password ='"+password+"'";
-	ResultSet rs = stmt.executeQuery(query);
-	String msg = "";
-	if(rs.next()){
-		session.setAttribute("username", username);
-		session.setAttribute("role", rs.getString(7));
-		if(application.getAttribute("online")== null){
-			online=0;
-		}
-		else{
-			online =(Integer)application.getAttribute("online");
-		}    
-		online++;
-		application.setAttribute("online",online);
-		session.setAttribute("errmsg", "");
-		response.sendRedirect("../index.jsp");
-	}else{
-		session.setAttribute("errmsg", "username or password is invalid");
-		response.sendRedirect("../index.jsp");
-	}
+	String query = "insert into msuser (username, password, fullname, email, image, role) values ('"+username+"','"+password+"','"+fullname+"','"+email+"','"+image+"','member')";
 	
+	st.executeUpdate(query);
+
+	response.sendRedirect("../index.jsp");
 %>
