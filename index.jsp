@@ -22,11 +22,18 @@
 				
 				<%
 					
-					if(role=="admin")
+					if(role.equals("admin"))
 					{
 				%>
-				<div id="submenu">
-					<li>home</li>
+				<div id="admin">
+				<ul>
+						<li>Home</li>
+						<li>Member</li>
+						<li>Profile</li>
+						<li>Forum</li>
+						<li>Gallery</li>
+						<li>About Us</li>
+				</ul>
 					<%
 					String myname =  (String)session.getAttribute("username");
 					if(myname!=null)
@@ -42,7 +49,7 @@
 				
 				<%
 					}
-					else if(role=="member")
+					else if(role.equals("member"))
 					{
 				%>
 				<div id="submenu">
