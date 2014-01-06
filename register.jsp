@@ -10,76 +10,6 @@
 <body>
 <img alt="full screen background image" src="image/bg.jpg" id="full-screen-background-image" /> 
 	<div id="menu">
-		<% 
-					String role = (String)session.getAttribute("role");
-				%>
-				
-				<%
-					
-					if(role.equals("admin"))
-					{
-				%>
-				<div id="admin">
-				<div id="left">
-					<img src="image/left.png" width="320px" height="50px">
-				</div>
-				<div id="right">
-					<img src="image/right.png" width="320px" height="50px">
-				</div>
-				<ul>
-						<li>Home</li>
-						<li>Member</li>
-						<li>Profile</li>
-						<li>Forum</li>
-						<li>Gallery</li>
-						<li>About Us</li>
-				</ul>
-					<%
-					String myname =  (String)session.getAttribute("username");
-					if(myname!=null)
-						{
-						 out.println("Welcome  "+myname+"  , <a href=\"logout.jsp\" >Logout</a>");
-						}
-					else 
-						{
-							out.print("Welcome Guset");
-						}
-					%>
-				</div>
-				
-				<%
-					}
-					else if(role.equals("member"))
-					{
-				%>
-				<div id="member">
-					<div id="left">
-						<img src="image/left.png" width="380px" height="50px">
-					</div>
-					<div id="right">
-						<img src="image/right.png" width="380px" height="50px">
-					</div>
-							<li>Home</li>
-							<li>Profile</li>
-							<li>Forum</li>
-							<li>Gallery</li>
-							<li>About Us</li>
-							<%
-					String myname =  (String)session.getAttribute("username");
-					if(myname!=null)
-						{
-						 out.println("Welcome  "+myname+"  , <a href=\"logout.jsp\" >Logout</a>");
-						}
-					else 
-						{
-							out.print("Welcome Guset");
-						}
-					%>
-				</div>
-				<%
-					}
-					else {
-				%>
 				<div id="guest">
 					<div id="left">
 						<img src="image/left.png" width="440px" height="50px">
@@ -94,14 +24,64 @@
 						<li>About Us</li>
 					</ul>				
 				</div>
-				<%
-					}
-				%>
 	</div>
 	<div style="clear:both">
 	<div id="wrapper">
 			<div id="isi">
-				
+				<div style="margin-left:450px; margin-top:5px; color:white;">
+					REGISTER
+				</div>
+				<div id="register">
+					<form action="module/doRegister.jsp" method="post">
+						<table>
+							<tr>
+								<td width="40%">
+									Username :
+								</td>
+								<td>
+									<input type="text" name="username">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Password :
+								</td>
+								<td>
+									<input type="password" name="password">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Verified Password :
+								</td>
+								<td>
+									<input type="password" name="repassword">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Email :
+								</td>
+								<td>
+									<input type="text" name="email">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Image :
+								</td>
+								<td>
+									<input type="file" name="image" accept="image/*">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="submit" value="Submit">
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
 			</div>
 			<div id="user">
 				<center>

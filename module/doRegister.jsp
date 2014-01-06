@@ -4,14 +4,16 @@
 <%
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
-	String role;
+	String repassword = request.getParameter("repassword");
+	String email = request.getParameter("email");
+	String image = request.getParameter("image");
 	Integer online = 0;
 	String query = "SELECT * FROM MsUser where username ='"+username+"' AND Password ='"+password+"'";
 	ResultSet rs = stmt.executeQuery(query);
 	String msg = "";
 	if(rs.next()){
 		session.setAttribute("username", username);
-		session.setAttribute("role", rs.getString(4));
+		session.setAttribute("role", rs.getString(7));
 		if(application.getAttribute("online")== null){
 			online=0;
 		}
@@ -21,10 +23,10 @@
 		online++;
 		application.setAttribute("online",online);
 		session.setAttribute("errmsg", "");
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("../index.jsp");
 	}else{
 		session.setAttribute("errmsg", "username or password is invalid");
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("../index.jsp");
 	}
 	
 %>
