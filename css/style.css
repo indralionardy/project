@@ -17,11 +17,18 @@ html, body {
 }
 
 #left{
+	position:fixed;
 	top:0px;
 	left:0px;
 	z-index:10;
 	float:left;
 }
+
+#right{
+	position:absolute;
+	right:0px;
+}
+
 #menu{
 	height:50px;
 }
@@ -46,28 +53,46 @@ html, body {
 	float:left;
 }
 
-#submenu ul {
+#member{
+	margin-left:365px;
+	height:50px;
+	background: url(../image/menu2.jpg) no-repeat;
+	color:white;
+}
+
+#member ul {
 	list-style-type: none;
 	padding: 0px;
 	margin: 0px;
 }
 
-#submenu{
-	margin-left:0px;
-	margin-top:5px;
-	float:left;
-}
-
-#submenu li{
+#member li{
 	width: 105px;
-	margin-left:20px;
+	margin-left:22px;
+	margin-top:5px;
 	text-decoration:none;
 	float:left;
 }
 
-#right{
-	position:absolute;
-	right:0px;
+#guest{
+	margin-left:420px;
+	height:50px;
+	background: url(../image/menu3.jpg) no-repeat;
+	color:white;
+}
+
+#guest ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+#guest li{
+	width: 105px;
+	margin-left:28px;
+	margin-top:5px;
+	text-decoration:none;
+	float:left;
 }
 
 #wrapper {

@@ -9,12 +9,6 @@
 
 <body>
 <img alt="full screen background image" src="image/bg.jpg" id="full-screen-background-image" /> 
-	<div id="left">
-		<img src="image/left.png" width="320px" height="50px">
-	</div>
-	<div id="right">
-		<img src="image/right.png" width="320px" height="50px">
-	</div>
 	<div id="menu">
 		<% 
 					String role = (String)session.getAttribute("role");
@@ -26,6 +20,12 @@
 					{
 				%>
 				<div id="admin">
+				<div id="left">
+					<img src="image/left.png" width="320px" height="50px">
+				</div>
+				<div id="right">
+					<img src="image/right.png" width="320px" height="50px">
+				</div>
 				<ul>
 						<li>Home</li>
 						<li>Member</li>
@@ -52,22 +52,47 @@
 					else if(role.equals("member"))
 					{
 				%>
-				<div id="submenu">
-					gallery
+				<div id="member">
+					<div id="left">
+						<img src="image/left.png" width="380px" height="50px">
+					</div>
+					<div id="right">
+						<img src="image/right.png" width="380px" height="50px">
+					</div>
+							<li>Home</li>
+							<li>Profile</li>
+							<li>Forum</li>
+							<li>Gallery</li>
+							<li>About Us</li>
+							<%
+					String myname =  (String)session.getAttribute("username");
+					if(myname!=null)
+						{
+						 out.println("Welcome  "+myname+"  , <a href=\"logout.jsp\" >Logout</a>");
+						}
+					else 
+						{
+							out.print("Welcome Guset");
+						}
+					%>
 				</div>
 				<%
 					}
 					else {
 				%>
-				<div id="submenu">
+				<div id="guest">
+					<div id="left">
+						<img src="image/left.png" width="440px" height="50px">
+					</div>
+					<div id="right">
+						<img src="image/right.png" width="450px" height="50px">
+					</div>
 					<ul>
-						<li>Home</li>
-						<li>Member</li>
-						<li>Profile</li>
+						<li>Homee</li>
 						<li>Forum</li>
 						<li>Gallery</li>
 						<li>About Us</li>
-					</ul>		
+					</ul>				
 				</div>
 				<%
 					}

@@ -11,7 +11,7 @@
 	String msg = "";
 	if(rs.next()){
 		session.setAttribute("username", username);
-		session.setAttribute("role", rs.getString(3));
+		session.setAttribute("role", rs.getString(4));
 		if(application.getAttribute("online")== null){
 			online=0;
 		}
