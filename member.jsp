@@ -96,6 +96,9 @@
 				<td>Email:</td>
 				<td><%=rs.getString("email")%></td>
 			</tr>
+			<tr>
+				<td><a href="module/doDelete.jsp?id=<%=rs.getString("id")%>">Delete</a></td>
+			</tr>
 			</table>
 			</br>
 			<%

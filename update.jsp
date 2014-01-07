@@ -151,7 +151,7 @@
 								</td>
 								<td>
 								<input type="text" name="upimage" value=<%=image%>>
-								<input type="number" name="upid" value=<%=id%>>
+								<input type="hidden" name="upid" value=<%=id%>>
 								</td>
 							</tr>
 							<tr>
