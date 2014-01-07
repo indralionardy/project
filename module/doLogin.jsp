@@ -12,6 +12,7 @@
 	if(rs.next()){
 		session.setAttribute("username", username);
 		session.setAttribute("role", rs.getString(7));
+		session.setAttribute("role", rs.getString(1));
 		if(application.getAttribute("online")== null){
 			online=0;
 		}

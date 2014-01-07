@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@include file="module/connect.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,7 +17,7 @@
 				
 				<%
 					
-					if(role.equals("admin"))
+					if(role=="admin")
 					{
 				%>
 				<div id="admin">
@@ -49,7 +50,7 @@
 				
 				<%
 					}
-					else if(role.equals("member"))
+					else if(role=="member")
 					{
 				%>
 				<div id="member">
@@ -101,7 +102,45 @@
 	<div style="clear:both">
 	<div id="wrapper">
 			<div id="isi">
-				
+				<%
+					String myname =  (String)session.getAttribute("username");
+					String query = "SELECT * FROM MsUser where username='"+myname+"'";
+					ResultSet rs = stmt.executeQuery(query);
+					if(rs.next()){
+						session.setAttribute("username", rs.getString(2));
+						session.setAttribute("fullname", rs.getString(4));
+						session.setAttribute("email", rs.getString(5));
+						session.setAttribute("image", rs.getString(6));
+					}
+					String username=(String)session.getAttribute("username");
+					String fullname=  (String)session.getAttribute("fullname");
+					String email=  (String)session.getAttribute("email");
+					String image=  (String)session.getAttribute("image");
+				%>
+				<table>
+					<tr>
+						<td>
+							Username:
+						</td>
+						<td>
+							<%=username%>
+						</td>
+						<td>
+							Email:
+						</td>
+						<td>
+							<%=email%>
+						</td>
+						<td>
+							Fullname:
+						</td>
+						<td>
+							<%=fullname%>
+						</td>
+					</tr>
+				</table>
+				<a href="update.jsp">Update profile</a>
+				<a href="changepassword.jsp">Change Password</a>
 			</div>
 			<div id="user">
 				<center>

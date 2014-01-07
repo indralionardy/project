@@ -35,7 +35,7 @@
 					<form action="module/doRegister.jsp" method="post">
 						<table>
 							<tr>
-								<td width="40%">
+								<td width="50%">
 									Username :
 								</td>
 								<td>
