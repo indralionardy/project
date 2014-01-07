@@ -117,7 +117,7 @@
 					String fullname=  (String)session.getAttribute("fullname");
 					String email=  (String)session.getAttribute("email");
 					String image=  (String)session.getAttribute("image");
-					Integer id=  (String)session.getAttribute("id");
+					String id=  (String)session.getAttribute("id");
 				%>
 				<form action="module/doUpdate.jsp" method="post">
 						<table>
@@ -151,7 +151,7 @@
 								</td>
 								<td>
 								<input type="text" name="upimage" value=<%=image%>>
-								<input type="text" name="upid" value=<%=id%>>
+								<input type="number" name="upid" value=<%=id%>>
 								</td>
 							</tr>
 							<tr>

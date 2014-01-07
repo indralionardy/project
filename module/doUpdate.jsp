@@ -6,8 +6,8 @@
 	String upfullname = request.getParameter("upname");
 	String upemail = request.getParameter("upemail");
 	String upimage = request.getParameter("upimage");
-	Integer upid = request.getParameter("upid");
-	String query = "update msuser set username='"+upusername+"',fullname='"+upfullname+"',email='"+upemail+"',image='"+upimage+"' where id='"+upid+"'";
+	String upid = request.getParameter("upid");
+	String query = "update msuser set username='"+upusername+"',fullname='"+upfullname+"',email='"+upemail+"',image='"+upimage+"' WHERE id = "+upid;
 	
 	st.executeUpdate(query);
 	response.sendRedirect("../index.jsp");
