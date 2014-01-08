@@ -18,10 +18,10 @@
 						<img src="image/right.png" width="450px" height="50px">
 					</div>
 					<ul>
-						<li>Home</li>
-						<li>Forum</li>
-						<li>Gallery</li>
-						<li>About Us</li>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="forum.jsp">Forum</a></li>
+						<li><a href="gallery.jsp">Gallery</a></li>
+						<li><a href="about.jsp">About Us</a></li>
 					</ul>				
 				</div>
 	</div>

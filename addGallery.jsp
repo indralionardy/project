@@ -105,7 +105,48 @@
 	<div style="clear:both">
 	<div id="wrapper">
 			<div id="isi">
-				
+				Gallery
+				<form action="module/doAddGallery.jsp" method="post">
+						<table>
+							<tr>
+								<td width="50%">
+									Name :
+								</td>
+								<td>
+									<input type="text" name="name">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Category :
+								</td>
+								<td>
+									<input type="text" name="category">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Description :
+								</td>
+								<td>
+									<input type="text" name="desc">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Image :
+								</td>
+								<td>
+									<input type="file" name="image" accept="image/*">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="submit" value="Submit">
+								</td>
+							</tr>
+						</table>
+					</form>
 			</div>
 			<div id="user">
 				<center>

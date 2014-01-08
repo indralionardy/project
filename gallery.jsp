@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@include file="module/connect.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -105,6 +106,57 @@
 	<div style="clear:both">
 	<div id="wrapper">
 			<div id="isi">
+				Gallery
+				<a href="addGallery.jsp">add gallery</a>
+				
+				<%
+					String query = "SELECT * FROM msgallery ";
+					ResultSet rs = stmt.executeQuery(query);
+					if(rs.next()){
+						session.setAttribute("name", rs.getString(2));
+						session.setAttribute("category", rs.getString(3));
+						session.setAttribute("description", rs.getString(4));
+						session.setAttribute("image", rs.getString(5));
+					}
+					String namegallery=(String)session.getAttribute("name");
+					String categorygallery=  (String)session.getAttribute("category");
+					String desgalleryc=  (String)session.getAttribute("description");
+					String imagegallery=  (String)session.getAttribute("image");
+				%>
+				<table>
+					<tr>
+						<td>
+							Name:
+						</td>
+						<td>
+							<%=namegallery%>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Category:
+						</td>
+						<td>
+							<%=categorygallery%>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Description:
+						</td>
+						<td>
+							<%=desgalleryc%>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Image:
+						</td>
+						<td>
+							<%=imagegallery%>
+						</td>
+					</tr>
+				</table>
 				
 			</div>
 			<div id="user">
