@@ -94,6 +94,7 @@ html, body {
 	text-decoration:none;
 	float:left;
 }
+a {text-decoration: none; background-color: none; }
 
 #wrapper {
   position: relative;

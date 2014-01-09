@@ -79,7 +79,7 @@
 									Image :
 								</td>
 								<td>
-								<input type="text" name="image">
+							<input type="file" name="image" accept="image/*">
 								</td>
 							</tr>
 							<tr>
