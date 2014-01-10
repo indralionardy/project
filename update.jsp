@@ -60,11 +60,13 @@
 					<div id="right">
 						<img src="image/right.png" width="380px" height="50px">
 					</div>
-							<li><a href="index.jsp">Home</a></li>
-							<li><a href="profile.jsp">Profile</a></li>
-							<li><a href="forum.jsp">Forum</a></li>
-							<li><a href="gallery.jsp">Gallery</a></li>
-							<li><a href="about.jsp">About Us</a></li>
+					<ul>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="profile.jsp">Profile</a></li>
+						<li><a href="forum.jsp">Forum</a></li>
+						<li><a href="gallery.jsp">Gallery</a></li>
+						<li><a href="about.jsp">About Us</a></li>
+					</ul>
 							<%
 					String myname =  (String)session.getAttribute("username");
 					if(myname!=null)

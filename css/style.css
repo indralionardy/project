@@ -25,7 +25,7 @@ html, body {
 }
 
 #right{
-	position:absolute;
+	position:fixed;
 	right:0px;
 }
 
@@ -53,6 +53,16 @@ html, body {
 	float:left;
 }
 
+#admin a{
+	text-decoration:none;
+	color:white;
+}
+
+a{
+	text-decoration:none;
+	color:white;
+}
+
 #member{
 	margin-left:365px;
 	height:50px;
@@ -74,7 +84,13 @@ html, body {
 	float:left;
 }
 
+#member a{
+	text-decoration:none;
+	color:white;
+}
+
 #guest{
+	position:fixed;
 	margin-left:420px;
 	height:50px;
 	background: url(../image/menu3.jpg) no-repeat;
@@ -94,7 +110,10 @@ html, body {
 	text-decoration:none;
 	float:left;
 }
-a {text-decoration: none; background-color: none; }
+#guest a{
+	text-decoration:none;
+	color:white;
+}
 
 #wrapper {
   position: relative;

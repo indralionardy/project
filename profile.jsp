@@ -13,11 +13,15 @@
 	<div id="menu">
 		<% 
 					String role = (String)session.getAttribute("role");
+					if(role==null)
+					{
+						role="guest";
+					}
 				%>
 				
 				<%
 					
-					if(role=="admin")
+					if(role.equals("admin"))
 					{
 				%>
 				<div id="admin">
@@ -50,7 +54,7 @@
 				
 				<%
 					}
-					else if(role=="member")
+					else if(role.equals("member"))
 					{
 				%>
 				<div id="member">
@@ -60,11 +64,13 @@
 					<div id="right">
 						<img src="image/right.png" width="380px" height="50px">
 					</div>
-							<li><a href="index.jsp">Home</a></li>
-							<li><a href="profile.jsp">Profile</a></li>
-							<li><a href="forum.jsp">Forum</a></li>
-							<li><a href="gallery.jsp">Gallery</a></li>
-							<li><a href="about.jsp">About Us</a></li>
+					<ul>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="profile.jsp">Profile</a></li>
+						<li><a href="forum.jsp">Forum</a></li>
+						<li><a href="gallery.jsp">Gallery</a></li>
+						<li><a href="about.jsp">About Us</a></li>
+					</ul>
 							<%
 					String myname =  (String)session.getAttribute("username");
 					if(myname!=null)

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@include file="module/connect.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,15 +13,11 @@
 	<div id="menu">
 		<% 
 					String role = (String)session.getAttribute("role");
-					if(role==null)
-					{
-						role="guest";
-					}
 				%>
 				
 				<%
 					
-					if(role.equals("admin"))
+					if(role=="admin")
 					{
 				%>
 				<div id="admin">
@@ -53,7 +50,7 @@
 				
 				<%
 					}
-					else if(role.equals("member"))
+					else if(role=="member")
 					{
 				%>
 				<div id="member">
@@ -107,12 +104,39 @@
 	<div style="clear:both">
 	<div id="wrapper">
 			<div id="isi">
-				Gallery
-				<form action="module/doAddGallery.jsp" method="post">
+				
+				<form action="module/doAddThread.jsp" method="post">
 						<table>
 							<tr>
 								<td width="50%">
-									Name :
+									Thread Category:
+								</td>
+								<td>
+									<select name="category">
+								<%
+									int jmldata = 0;
+									
+									String query = "SELECT * FROM MsCategory";
+									ResultSet rs1 = stmt.executeQuery(query);
+									while(rs1.next()){
+										jmldata++;
+									}
+									ResultSet rs = st.executeQuery(query);
+									for(int i=0;rs.next();i++)
+									{	
+
+								%>
+									<option value="<%=rs.getString("categorydesc")%>" name="category"><%=rs.getString("categorydesc")%></option>
+									
+									
+								<%	}%>
+									</select>
+									
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Thread name:
 								</td>
 								<td>
 									<input type="text" name="name">
@@ -120,26 +144,10 @@
 							</tr>
 							<tr>
 								<td>
-									Category :
+									Content:
 								</td>
 								<td>
-									<input type="text" name="category">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Description :
-								</td>
-								<td>
-									<input type="text" name="desc">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									Image :
-								</td>
-								<td>
-									<input type="file" name="image" accept="image/*">
+									<input type="text" name="content">
 								</td>
 							</tr>
 							<tr>
@@ -152,14 +160,8 @@
 			</div>
 			<div id="user">
 				<center>
-				
-				
-				<%
-				if(role.equals("guest"))
-				{
-				%>
-				
 				<h1>Login</h1>
+				</br>
 				<form action="module/doLogin.jsp" method="post">
 					<table>
 						<tr>
@@ -182,17 +184,9 @@
 							<input type="submit" value="Login">
 							</td>
 						</tr>
-						<tr>
-							<td>
-							<a href="register.jsp">SIGN UP </a>
-							</td>
-						</tr>
 					</table>
 				</center>
 				</form>
-				<%
-				}
-				%>
 			</div>
 	</div>
 </body>
