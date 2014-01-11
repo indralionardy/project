@@ -6,7 +6,15 @@
 	String name = request.getParameter("name");
 	String content = request.getParameter("content");
 	String categoryid;
-	String query = "insert into msheaderthread (threadname , subject) values ('"+name+"','"+content+"')";
+	String myname =  (String)session.getAttribute("username");
+	String getid = "SELECT * FROM mscategory where categorydesc='"+category+"'";
+					ResultSet rs = stmt.executeQuery(getid);
+					if(rs.next()){
+						session.setAttribute("categoryid", rs.getString(1));
+					}
+					String id=(String)session.getAttribute("categoryid");
+	
+	String query = "insert into msheaderthread (categoryid ,userid, threadname ,subject,subdate) values ('"+id+"','"+myname+"','"+name+"','"+content+"',NOW())";
 	
 	st.executeUpdate(query);
 

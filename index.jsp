@@ -106,6 +106,11 @@
 	</div>
 	<div style="clear:both">
 	<div id="wrapper">
+			
+			<div id="logo">
+			<img src="image/logo.png" height="50px" width="250px">
+			</div>
+			
 			<div id="isi">
 				
 			</div>

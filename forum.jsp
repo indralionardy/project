@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@include file="module/connect.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -110,6 +111,50 @@
 				<a href="addCategory.jsp">Add category</a>
 				<a href="addThread.jsp">Add Thread</a>
 				<a href="editThread.jsp">Edit Thread</a>
+				</br>
+				</br>
+				<%
+				int dataperpage = 3;
+				int jmldata = 0;
+				int jmlhalaman = 0;
+				
+				String query = "SELECT * FROM msheaderthread";
+				ResultSet rs1 = stmt.executeQuery(query);
+				while(rs1.next()){
+					jmldata++;
+				}
+				stmt.close();
+				
+				jmlhalaman = (int)(Math.ceil(jmldata*1.0 / dataperpage));
+				ResultSet rs = st.executeQuery(query);
+				
+				String snumpage = request.getParameter("page");
+				int numpage = 0;
+				if(snumpage!=null){
+						numpage = Integer.parseInt(snumpage);
+				}
+				for(int i=0;i<(numpage-1)*dataperpage;i++){
+					rs.next();
+				}
+				for(int i=0;i<10 && rs.next();i++)
+				{
+			%>
+			<table>
+			<tr>
+				<td>subject:</td>
+				<td><%=rs.getString("subject")%></td>
+			</tr>
+			<tr>
+				<td><a href="module/doDelete.jsp?id=<%=rs.getString("threadid")%>">Delete</a></td>
+			</tr>
+			</table>
+			</br>
+			<%
+				}
+				rs.close();
+				%>
+				
+				</table>
 			</div>
 			<div id="user">
 				<center>

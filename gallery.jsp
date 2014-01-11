@@ -110,56 +110,60 @@
 			<div id="isi">
 				Gallery
 				<a href="addGallery.jsp">add gallery</a>
-				
 				<%
-					String query = "SELECT * FROM msgallery ";
-					ResultSet rs = stmt.executeQuery(query);
-					if(rs.next()){
-						session.setAttribute("name", rs.getString(2));
-						session.setAttribute("category", rs.getString(3));
-						session.setAttribute("description", rs.getString(4));
-						session.setAttribute("image", rs.getString(5));
-					}
-					String namegallery=(String)session.getAttribute("name");
-					String categorygallery=  (String)session.getAttribute("category");
-					String desgalleryc=  (String)session.getAttribute("description");
-					String imagegallery=  (String)session.getAttribute("image");
-				%>
-				<table>
-					<tr>
-						<td>
-							Name:
-						</td>
-						<td>
-							<%=namegallery%>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Category:
-						</td>
-						<td>
-							<%=categorygallery%>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Description:
-						</td>
-						<td>
-							<%=desgalleryc%>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Image:
-						</td>
-						<td>
-							<%=imagegallery%>
-						</td>
-					</tr>
-				</table>
+				int dataperpage = 3;
+				int jmldata = 0;
+				int jmlhalaman = 0;
 				
+				String query = "SELECT * FROM msgallery";
+				ResultSet rs1 = stmt.executeQuery(query);
+				while(rs1.next()){
+					jmldata++;
+				}
+				stmt.close();
+				
+				jmlhalaman = (int)(Math.ceil(jmldata*1.0 / dataperpage));
+				ResultSet rs = st.executeQuery(query);
+				
+				String snumpage = request.getParameter("page");
+				int numpage = 0;
+				if(snumpage!=null){
+						numpage = Integer.parseInt(snumpage);
+				}
+				for(int i=0;i<(numpage-1)*dataperpage;i++){
+					rs.next();
+				}
+				for(int i=0;i<3 && rs.next();i++)
+				{
+			%>
+			<table>
+			<tr>
+				<td>Name:</td>
+				<td><%=rs.getString("name")%></td>
+			</tr>
+			<tr>
+				<td>Category:</td>
+				<td><%=rs.getString("category")%></td>
+			</tr>
+			<tr>
+				<td>Description:</td>
+				<td><%=rs.getString("description")%></td>
+			</tr>
+			<tr>
+				<td>Image:</td>
+				<td><%=rs.getString("image")%></td>
+			</tr>
+			<tr>
+				<td><a href="module/doDelete.jsp?id=<%=rs.getString("id")%>">Delete</a></td>
+			</tr>
+			</table>
+			</br>
+			<%
+				}
+				rs.close();
+				%>
+				
+				</table>				
 			</div>
 			<div id="user">
 				<center>

@@ -123,6 +123,14 @@ a{
   color: #333;
 }
 
+#logo{
+	position:fixed;
+	margin-left:10px;
+	top:32px;
+	z-index:1000;
+	
+}
+
 #isi{
 	margin-left:10px;
 	width: 1000px;
